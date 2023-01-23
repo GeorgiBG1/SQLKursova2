@@ -30,7 +30,6 @@ INSERT INTO Models VALUES
 (105,'Model 3',2),
 (106,'Nova',3)
 
-INSERT INTO Models VALUES
-(107, 'Model XI', 2)
 
 SELECT * FROM Models
+SELECT * FROM Manufacturers

@@ -7,10 +7,10 @@ PassportsId INT NOT NULL UNIQUE,
 PassportNumber VARCHAR(50)
 )
 CREATE TABLE Persons(
-PersonID INT NOT NULL UNIQUE,
+PersonId INT NOT NULL UNIQUE,
 FirstName VARCHAR(50),
 Salary DECIMAL(15,2),
-PassportID INT UNIQUE,
+PassportId INT UNIQUE,
 CONSTRAINT FK_PersonsPassworts
 FOREIGN KEY (PassportId) REFERENCES Passports(PassportsId)
 )
@@ -18,15 +18,12 @@ FOREIGN KEY (PassportId) REFERENCES Passports(PassportsId)
 INSERT INTO Passports VALUES 
 (101, 'N34FG21B'),
 (102, 'K65LO4R7'),
-(103, 'ZE657QP2'),
-(107, 'Z73F4G15')
+(103, 'ZE657QP2')
 
 INSERT INTO Persons VALUES
 (1,'Roberto',43300.00,102),
 (2,'Tom',56100.00,103),
 (3,'Yana',60200.00,101)
 
-INSERT INTO Persons VALUES
-(4, 'Bob', 31200.23, 107)
 SELECT * FROM Persons
 SELECT * FROM Passports

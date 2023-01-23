@@ -17,3 +17,5 @@ INSERT INTO Teachers VALUES
 ('Ted', 105),
 ('Mark', 101),
 ('Greta', 101)
+
+SELECT * FROM Teachers
