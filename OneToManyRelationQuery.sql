@@ -3,17 +3,24 @@ GO
 USE OneToManyDB
 GO
 
-CREATE TABLE Models(
- ModelID INT NOT NULL,
- Name VARCHAR(50),
- ManufacturerID INT
-)
-
 CREATE TABLE Manufacturers(
- ManufacturerId INT NOT NULL,
+ ManufacturerId INT NOT NULL UNIQUE,
  Name VARCHAR(50),
  EstablishedOn DATE
 )
+
+CREATE TABLE Models(
+ ModelId INT NOT NULL UNIQUE,
+ Name VARCHAR(50),
+ ManufacturerId INT,
+ CONSTRAINT FK_ModelsManufacturers
+ FOREIGN KEY(ManufacturerId) REFERENCES Manufacturers(ManufacturerId)
+)
+
+INSERT INTO Manufacturers VALUES
+(1, 'BMW','07/03/1916'),
+(2, 'Tesla','01/01/2003'),
+(3, 'Lada','01/05/1966')
 
 INSERT INTO Models VALUES
 (101,'X1',1),
@@ -23,19 +30,7 @@ INSERT INTO Models VALUES
 (105,'Model 3',2),
 (106,'Nova',3)
 
-INSERT INTO Manufacturers VALUES
-(1, 'BMW','07/03/1916'),
-(2, 'Tesla','01/01/2003'),
-(3, 'Lada','01/05/1966')
+INSERT INTO Models VALUES
+(107, 'Model XI', 2)
 
-ALTER TABLE Models
-ADD CONSTRAINT PK_ModelsId
-PRIMARY KEY (ModelId)
-
-ALTER TABLE Manufacturers
-ADD CONSTRAINT PK_ManufacturerId
-PRIMARY KEY (ManufacturerId)
-
-ALTER TABLE Models
-ADD CONSTRAINT FK_ModelsManufacturers
-FOREIGN KEY(ManufacturerId) REFERENCES Manufacturers(ManufacturerId)
+SELECT * FROM Models
